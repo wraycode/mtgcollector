@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                    {{ form.search.label(class="form-control-label") }}
+                    {% if form.search.errors %}
+                        {{ form.search(class="form-control form-control-md is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.search.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                <div class="form-group">
+
+
+                        <div class="input-group mb-3">
+                          {{ form.search(class="form-control ") }}
+                          <div class="input-group-append">
+                            {{ form.submit(class="btn btn-outline-secondary") }}
+                          </div>
+                        </div>
+                        </div>
+                    {% endif %}
+
+
+                </div>
+            </fieldset>
+
+        </form>
+        <div id="results-container">
+        <div id="card-container">
+          <div id="card-details">
+          <h2>{{ card.name }}</h2>
+          <h5>{{ card.type_line }}</h5>
+          <h5>{{ card.released_at }}</h5>
+          <h5>{{ card.rarity }}</h5>
+          <h5>set name: {{ card.set_name }}</h5>
+          <h5>reprint: {{ card.reprint }}</h5>
+          <h5>Colors: {{ card.colors }}</h5>
+          <h5>Standard play: {{ card.legalities.standard }}</h5>
+          <h5>USD: {{ card.usd }}</h5>
+         </div>
+
+          <img id="card_img" src="{{ card.image_uris.normal }}" />
+        </div>
+       </div>
+
+       <button type="button" class="btn btn-dark" id="add_card" name="add_card">
+         Add to Collection
+       </button>
+
+    </div>
+
+{% block scripts %}
+{{ super() }}
+
+<script type="text/javascript">
+
+  
+  /*
+ $('#card_img').on('mouseover', function() {
+   $(this).attr('src', "{{ card.image_uris.normal }}")
+ });
+
+ $('#card_img').on('mouseleave', function() {
+   $(this).attr('src', "{{ card.image_uris.small }}")
+ });
+*/
+</script>
+{% endblock %}
+{% endblock content %}
