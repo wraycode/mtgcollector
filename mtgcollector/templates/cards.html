@@ -34,6 +34,7 @@
         <div id="results-container">
         <div id="card-container">
           <div id="card-details">
+            {{ card }}
           <h2>{{ card.name }}</h2>
           <h5>{{ card.type_line }}</h5>
           <h5>{{ card.released_at }}</h5>
@@ -60,7 +61,7 @@
 
 <script type="text/javascript">
 
-  
+
   /*
  $('#card_img').on('mouseover', function() {
    $(this).attr('src', "{{ card.image_uris.normal }}")
